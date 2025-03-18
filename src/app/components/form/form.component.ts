@@ -9,8 +9,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AsyncPipe } from '@angular/common';
 import { map, Observable, of, startWith } from 'rxjs';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 export interface User {
   name: string;
@@ -24,9 +26,11 @@ export interface User {
     MatInputModule,
     MatButtonModule,
     MatAutocompleteModule,
+    MatDatepickerModule,
     AsyncPipe,
   ],
   templateUrl: './form.component.html',
+  providers: [provideNativeDateAdapter()],
   styleUrl: './form.component.css',
 })
 export class FormComponent {
