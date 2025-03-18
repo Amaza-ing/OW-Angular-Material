@@ -39,6 +39,7 @@ export class FormComponent {
     content: new FormControl('', [Validators.required]),
     author: new FormControl('', [Validators.required, Validators.email]),
     user: new FormControl(''),
+    date: new FormControl(''),
   });
 
   options: User[] = [{ name: 'Mary' }, { name: 'Shelley' }, { name: 'Igor' }];
