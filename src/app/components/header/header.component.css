@@ -1,10 +1,12 @@
 header {
   background-color: darkblue;
   color: white;
-  height: 100px;
+  height: 150px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
   
   h1 {
     margin: 0;
