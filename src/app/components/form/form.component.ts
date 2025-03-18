@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,9 +22,9 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class FormComponent {
   articleForm = new FormGroup({
-    title: new FormControl(''),
-    content: new FormControl(''),
-    author: new FormControl(''),
+    title: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    content: new FormControl('', [Validators.required]),
+    author: new FormControl('', [Validators.required, Validators.email]),
   });
 
   handleSubmit() {

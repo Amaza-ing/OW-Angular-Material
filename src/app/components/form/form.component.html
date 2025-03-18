@@ -3,18 +3,38 @@
     <mat-form-field>
       <mat-label for="title">Título: </mat-label>
       <input matInput type="text" id="title" formControlName="title" />
+      @if (articleForm.controls["title"].invalid &&
+      articleForm.controls["title"].touched) {
+      <mat-error>
+        El título es obligatorio y debe tener más de 4 caracteres
+      </mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field>
       <mat-label for="content">Cuerpo del artículo: </mat-label>
       <input matInput type="text" id="content" formControlName="content" />
+      @if (articleForm.controls["content"].invalid &&
+      articleForm.controls["content"].touched) {
+      <mat-error class="error-msg">
+        El cuerpo del artículo no puede estar vacío
+      </mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field>
       <mat-label for="author">Autor: </mat-label>
       <input matInput type="text" id="author" formControlName="author" />
+      @if (articleForm.controls["author"].invalid &&
+      articleForm.controls["author"].touched) {
+      <mat-error class="error-msg">
+        El autor es obligatorio y debe ser un email
+      </mat-error>
+      }
     </mat-form-field>
 
-    <button mat-raised-button>Crear Artículo</button>
+    <button mat-stroked-button [disabled]="articleForm.invalid">
+      Crear Artículo
+    </button>
   </form>
 </section>
