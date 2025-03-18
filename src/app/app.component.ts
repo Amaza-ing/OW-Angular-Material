@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
-import { GridLayoutComponent } from "./components/grid-layout/grid-layout.component";
+import { CardComponent } from "./components/card/card.component";
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, GridLayoutComponent],
+  imports: [HeaderComponent, CardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
