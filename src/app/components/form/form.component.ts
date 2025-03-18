@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AsyncPipe } from '@angular/common';
+import { map, Observable, of, startWith } from 'rxjs';
 
 export interface User {
   name: string;
@@ -33,15 +34,16 @@ export class FormComponent {
     title: new FormControl('', [Validators.required, Validators.minLength(4)]),
     content: new FormControl('', [Validators.required]),
     author: new FormControl('', [Validators.required, Validators.email]),
+    user: new FormControl(''),
   });
 
   options: User[] = [{ name: 'Mary' }, { name: 'Shelley' }, { name: 'Igor' }];
-  filteredOptions: Observable<User[]>;
+  filteredOptions: Observable<User[]> = of([]);
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
+    this.filteredOptions = this.articleForm.controls['user'].valueChanges.pipe(
       startWith(''),
-      map((value) => {
+      map((value: any) => {
         const name = typeof value === 'string' ? value : value?.name;
         return name ? this._filter(name as string) : this.options.slice();
       })
