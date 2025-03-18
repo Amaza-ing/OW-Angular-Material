@@ -1,1 +1,7 @@
-<p>lists-tables works!</p>
+<mat-selection-list #shoes>
+  @for (shoe of typesOfShoes; track shoe) {
+  <mat-list-option>{{ shoe }}</mat-list-option>
+  }
+</mat-selection-list>
+
+<p>Options selected: {{ shoes.selectedOptions.selected.length }}</p>
