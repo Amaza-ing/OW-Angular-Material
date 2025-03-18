@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
-import { MenusComponent } from "./components/menus/menus.component";
+import { ListsTablesComponent } from "./components/lists-tables/lists-tables.component";
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, MenusComponent],
+  imports: [HeaderComponent, ListsTablesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
