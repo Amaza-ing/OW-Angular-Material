@@ -1,18 +1,18 @@
 <form [formGroup]="articleForm" (ngSubmit)="handleSubmit()">
-  <fieldset>
-    <label for="title">Título: </label>
-    <input type="text" id="title" formControlName="title" />
-  </fieldset>
+  <mat-form-field>
+    <mat-label for="title">Título: </mat-label>
+    <input matInput type="text" id="title" formControlName="title" />
+  </mat-form-field>
 
-  <fieldset>
-    <label for="content">Cuerpo del artículo: </label>
-    <input type="text" id="content" formControlName="content" />
-  </fieldset>
+  <mat-form-field>
+    <mat-label for="content">Cuerpo del artículo: </mat-label>
+    <input matInput type="text" id="content" formControlName="content" />
+  </mat-form-field>
 
-  <fieldset>
-    <label for="author">Autor: </label>
-    <input type="text" id="author" formControlName="author" />
-  </fieldset>
+  <mat-form-field>
+    <mat-label for="author">Autor: </mat-label>
+    <input matInput type="text" id="author" formControlName="author" />
+  </mat-form-field>
 
   <button>Crear Artículo</button>
 </form>
