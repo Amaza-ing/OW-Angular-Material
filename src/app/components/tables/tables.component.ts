@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 export interface UserData {
@@ -43,13 +44,15 @@ const NAMES: string[] = [
 
 @Component({
   selector: 'app-tables',
-  imports: [MatTableModule],
+  imports: [MatTableModule, MatPaginatorModule],
   templateUrl: './tables.component.html',
   styleUrl: './tables.component.css',
 })
-export class TablesComponent {
+export class TablesComponent implements AfterViewInit{
   displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
   dataSource: MatTableDataSource<UserData>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor() {
     // Create 100 users
@@ -59,6 +62,10 @@ export class TablesComponent {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(users);
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;    
   }
 
   createNewUser(id: number): UserData {
