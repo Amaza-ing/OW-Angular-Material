@@ -8,4 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './menus.component.html',
   styleUrl: './menus.component.css',
 })
-export class MenusComponent {}
+export class MenusComponent {
+  showAlert() {
+    alert("Hola a todos!");
+  }
+}
