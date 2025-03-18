@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 export interface UserData {
@@ -44,15 +45,16 @@ const NAMES: string[] = [
 
 @Component({
   selector: 'app-tables',
-  imports: [MatTableModule, MatPaginatorModule],
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule],
   templateUrl: './tables.component.html',
   styleUrl: './tables.component.css',
 })
-export class TablesComponent implements AfterViewInit{
+export class TablesComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor() {
     // Create 100 users
@@ -65,7 +67,8 @@ export class TablesComponent implements AfterViewInit{
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;    
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   createNewUser(id: number): UserData {
