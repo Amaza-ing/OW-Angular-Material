@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-menus',
-  imports: [],
+  imports: [MatMenuModule, MatButtonModule],
   templateUrl: './menus.component.html',
-  styleUrl: './menus.component.css'
+  styleUrl: './menus.component.css',
 })
-export class MenusComponent {
-
-}
+export class MenusComponent {}
