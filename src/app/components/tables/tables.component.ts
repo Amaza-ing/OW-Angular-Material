@@ -4,6 +4,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClient } from '@angular/common/http';
 
 export interface Comment {
   id: number;
@@ -27,15 +28,29 @@ export interface Comment {
 export class TablesComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'name', 'email', 'body'];
   dataSource: MatTableDataSource<Comment>;
+  API_URL = 'https://jsonplaceholder.typicode.com/comments';
+  comments: Comment[] = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() {
-    const comments: Comment[] = [];
+  constructor(private http: HttpClient) {
+    this.getComments();
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(comments);
+    this.dataSource = new MatTableDataSource(this.comments);
+  }
+
+  getComments() {
+    return this.http.get<Comment[]>(this.API_URL).subscribe({
+      next: (data) => {
+        this.comments = data;
+        this.dataSource = new MatTableDataSource(this.comments);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      error: (e) => console.log(e),
+    });
   }
 
   ngAfterViewInit(): void {
