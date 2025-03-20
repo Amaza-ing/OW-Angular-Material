@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
-import { DialogsComponent } from "./components/dialogs/dialogs.component";
+import { OpenDialogComponent } from "./components/open-dialog/open-dialog.component";
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, DialogsComponent],
+  imports: [HeaderComponent, OpenDialogComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

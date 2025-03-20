@@ -1,11 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import {
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+import { OpenDialogComponent } from '../open-dialog/open-dialog.component';
 
 @Component({
   selector: 'app-dialogs',
-  imports: [],
+  imports: [
+    MatButtonModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogContent,
+  ],
   templateUrl: './dialogs.component.html',
-  styleUrl: './dialogs.component.css'
+  styleUrl: './dialogs.component.css',
 })
 export class DialogsComponent {
-
+  readonly dialogRef = inject(MatDialogRef<OpenDialogComponent>);
 }
