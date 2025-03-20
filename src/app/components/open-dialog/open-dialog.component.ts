@@ -12,6 +12,13 @@ import { DialogsComponent } from '../dialogs/dialogs.component';
 export class OpenDialogComponent {
   readonly dialog = inject(MatDialog);
 
+  data = {
+    title: 'Este es el título',
+    content: 'Este es el contenido del modal',
+    optionNeg: 'Pues No',
+    optionPos: 'Genial!',
+  };
+
   openDialog(
     enterAnimationDuration: string,
     exitAnimationDuration: string
@@ -20,6 +27,7 @@ export class OpenDialogComponent {
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
+      data: this.data,
     });
   }
 }

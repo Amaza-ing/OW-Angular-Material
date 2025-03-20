@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
+  MAT_DIALOG_DATA,
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
@@ -23,4 +24,5 @@ import { OpenDialogComponent } from '../open-dialog/open-dialog.component';
 })
 export class DialogsComponent {
   readonly dialogRef = inject(MatDialogRef<OpenDialogComponent>);
+  data = inject(MAT_DIALOG_DATA)
 }
