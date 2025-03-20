@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -25,7 +25,7 @@ export interface Comment {
   templateUrl: './tables.component.html',
   styleUrl: './tables.component.css',
 })
-export class TablesComponent implements AfterViewInit {
+export class TablesComponent {
   displayedColumns: string[] = ['id', 'name', 'email', 'body'];
   dataSource: MatTableDataSource<Comment>;
   API_URL = 'https://jsonplaceholder.typicode.com/comments';
@@ -51,11 +51,6 @@ export class TablesComponent implements AfterViewInit {
       },
       error: (e) => console.log(e),
     });
-  }
-
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
