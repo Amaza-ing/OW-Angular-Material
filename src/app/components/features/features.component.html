@@ -1,0 +1,9 @@
+<section class="features">
+  @for (feature of features; track $index) {
+  <mat-card class="feature-card">
+    <mat-icon>{{ feature.icon }}</mat-icon>
+    <h3>{{ feature.title }}</h3>
+    <p>{{ feature.description }}</p>
+  </mat-card>
+  }
+</section>

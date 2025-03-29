@@ -1,0 +1,19 @@
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #ffffff;
+
+  .feature-card {
+    width: 250px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  mat-icon {
+    color: #3f51b5;
+    margin-bottom: 10px;
+  }
+}
